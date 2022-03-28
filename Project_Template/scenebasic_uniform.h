@@ -6,13 +6,20 @@
 #include <glad/glad.h>
 #include "helper/glslprogram.h"
 
+#include "helper/objmesh.h"
+#include "helper/plane.h"
+
 class SceneBasic_Uniform : public Scene
 {
 private:
+  
     GLuint vaoHandle;
     GLSLProgram prog;
-    float angle;
+    Plane plane;
+    std::unique_ptr<ObjMesh> mesh;
 
+    float angle;
+    void setMatrices();
     void compile();
 
 public:
