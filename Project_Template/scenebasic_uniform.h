@@ -18,6 +18,7 @@ private:
     Plane plane;
      
     std::unique_ptr<ObjMesh> catMesh;
+    std::unique_ptr<ObjMesh> sofaMesh;
 
     float angle;
     float rotation;

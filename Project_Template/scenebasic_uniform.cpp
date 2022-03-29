@@ -16,6 +16,7 @@ using glm::mat4;
 SceneBasic_Uniform::SceneBasic_Uniform() : rotation(0.0f), plane(10.0f,10.0f,100,100) 
 {
     catMesh = ObjMesh::load("../Project_Template/media/cat.obj", true);
+    sofaMesh = ObjMesh::load("../Project_Template/media/sofa.obj", true);
 }
 
 void SceneBasic_Uniform::initScene()
@@ -85,16 +86,16 @@ void SceneBasic_Uniform::setMatrices()
 
 void SceneBasic_Uniform::render()
 {
-    view = glm::lookAt(vec3(0.0f, 0.0f, 4.15f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 2.0f, 0.0f));
+    view = glm::lookAt(vec3(10.0f, 5.0f, 4.15f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 2.0f, 0.0f));
     view = glm::rotate(view, glm::radians(30.0f * rotation), vec3(0.0f, 1.0f, 0.0f));
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    prog.setUniform("Material.Kd", 0.4f, 0.4f, 0.4f);
+    prog.setUniform("Material.Kd", 0.2f, 0.2f, 0.2f);
     prog.setUniform("Material.Ks", 0.9f, 0.9f, 0.9f);
     prog.setUniform("Material.Ka", 0.5f, 0.5f, 0.5f);
     prog.setUniform("Material.Shininess", 180.0f);
     model = mat4(1.0f);
-    model = glm::rotate(model, glm::radians(90.0f), vec3(0.0f, 1.0f, 0.0f));
+    model = glm::rotate(model, glm::radians(90.0f), vec3(0.0f, 10.0f, 0.0f));
     model = glm::scale(model, vec3(0.005f, 0.005f, 0.005f));
     model = glm::translate(model, vec3(10.0f, 0.0f, 10.0f));
     setMatrices();
@@ -105,9 +106,11 @@ void SceneBasic_Uniform::render()
     prog.setUniform("Material.Ka", 0.1f, 0.1f, 0.1f);
     prog.setUniform("Material.Shininess", 180.0f);
     model = mat4(1.0f);
+    model = glm::rotate(model, glm::radians(180.0f), vec3(0.0f, 1.0f, 0.0f));
+    model = glm::scale(model, vec3(0.05f, 0.05f, 0.05f));
     model = glm::translate(model, vec3(0.0f, -0.45f, 0.0f));
     setMatrices();
-   // plane.render();
+    sofaMesh->render();
 }
 
 void SceneBasic_Uniform::resize(int w, int h)
