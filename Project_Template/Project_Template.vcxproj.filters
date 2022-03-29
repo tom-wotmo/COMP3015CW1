@@ -65,6 +65,12 @@
     <None Include="shader\basic_uniform.vert">
       <Filter>shaders</Filter>
     </None>
+    <None Include="shader\phong.frag">
+      <Filter>shaders</Filter>
+    </None>
+    <None Include="shader\phong.vert">
+      <Filter>shaders</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="helper\scene.h">

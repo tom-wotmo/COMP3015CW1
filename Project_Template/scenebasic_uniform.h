@@ -16,9 +16,11 @@ private:
     GLuint vaoHandle;
     GLSLProgram prog;
     Plane plane;
-    std::unique_ptr<ObjMesh> mesh;
+     
+    std::unique_ptr<ObjMesh> catMesh;
 
     float angle;
+    float rotation;
     void setMatrices();
     void compile();
 

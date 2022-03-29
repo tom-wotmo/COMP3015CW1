@@ -38,3 +38,4 @@ LightIntensity = diffuse;
 gl_Position = MVP * vec4(VertexPosition, 1.0);
  
 }
+
