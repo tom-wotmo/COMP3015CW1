@@ -1,2 +1,2 @@
-﻿  scenebasic_uniform.cpp
-  Project_Template.vcxproj -> C:\Users\wotma\OneDrive\Documents\COMP3015CW1\Project_Template\x64\Debug\Project_Template.exe
+﻿  stb_image.cpp
+C:\Users\wotma\OneDrive\Documents\COMP3015CW1\Project_Template\helper\stb_image.cpp(2,10): fatal error C1083: Cannot open include file: 'helper/stb/stb_image.h': No such file or directory

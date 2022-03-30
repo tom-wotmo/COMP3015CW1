@@ -1,32 +1,40 @@
 #version 460
 
+layout (location = 0) out vec4 FragColor;
+
 
 in vec3 position;
 in vec3 normal;
-
-layout (location = 0) out vec4 FragColor;
+in vec2 TexCoord;
  
 //Light structure
 uniform struct LightInfo 
 {
   vec4 Position;		
-  vec3 La;				
-  vec3 L;				
+  vec3 La;	//ambient light			
+  vec3 L;	//light diffuse and spec			
 } Lights;
 
 //material information struct
 uniform struct MaterialInfo 
 {
-  vec3 Ka;				
-  vec3 Kd;		
-  vec3 Ks;			
-  float Shininess;	
+  vec3 Ka; //material ambient				
+  vec3 Kd; //material diffuse		
+  vec3 Ks; //material specular			
+  float Shininess; //material shininess	
 } Material;
+uniform struct FogInfo
+{
+float MaxDist;
+float MinDist;
+vec3 Colour;
+
+}Fog;
 
  vec3 phongModel(vec3 pos, vec3 n)
  {
 	
-	vec3 ambient = Lights.La * Material.Ka; 
+	 vec3 ambient = Lights.La * Material.Ka; 
 
 	 vec3 s = normalize(vec3(Lights.Position) - pos);
 	 float sDotN = max( dot(s,n), 0.0 );
@@ -46,5 +54,15 @@ uniform struct MaterialInfo
 void main()
 {
   
-	FragColor = vec4(phongModel(position, normal), 1.0);
+    float dist = abs(position.z);
+
+	float fogFactor = (Fog.MaxDist - dist) / (Fog.MaxDist - Fog.MinDist);
+
+	fogFactor = clamp(fogFactor,0.0,1.0);
+
+	vec3 phongColour = phongModel(position, normalize(normal));
+
+	vec3 colour = mix(Fog.Colour, phongColour, fogFactor);
+
+	FragColor = vec4(colour, 1.0);
 }

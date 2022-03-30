@@ -12,6 +12,7 @@ using std::endl;
 
 using glm::vec3;
 using glm::mat4;
+GLuint testTex;
 
 SceneBasic_Uniform::SceneBasic_Uniform() : rotation(0.0f), plane(10.0f,10.0f,100,100) 
 {
@@ -24,7 +25,7 @@ void SceneBasic_Uniform::initScene()
     compile();
     glEnable(GL_DEPTH_TEST);
 
-
+    
     view = glm::lookAt(vec3(0.5f, 0.75f, 0.75f), vec3(0.0f, 0.0f, 0.0f),vec3(0.0f, 1.0f, 0.0f));
     projection = mat4(1.0f);
 
@@ -37,8 +38,10 @@ void SceneBasic_Uniform::initScene()
 
     //lights
     prog.setUniform("Lights.La", 0.5f, 0.5f, 0.5f);
-    prog.setUniform("Lights.L", 0.5f, 0.5f, 0.5f);
+    prog.setUniform("Lights.L", 1.5f, 1.5f, 1.5f);
     prog.setUniform("Lights.Position", lightpos);
+
+
     
 
 }
@@ -76,12 +79,17 @@ void SceneBasic_Uniform::render()
     view = glm::lookAt(vec3(10.0f, 5.0f, 4.15f), vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 2.0f, 0.0f));
     view = glm::rotate(view, glm::radians(30.0f * rotation), vec3(0.0f, 1.0f, 0.0f));
 
+    //load the fog
+    prog.setUniform("Fog.MaxDist", 60.0f);
+    prog.setUniform("Fog.MinDist", 5.0f);
+    prog.setUniform("Fog.Colour", vec3(1.35f,1.0f,0.0f));
+
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     //render the cat
     prog.setUniform("Material.Kd", 0.2f, 0.2f, 0.2f);
     prog.setUniform("Material.Ks", 0.9f, 0.9f, 0.9f);
     prog.setUniform("Material.Ka", 0.5f, 0.5f, 0.5f);
-    prog.setUniform("Material.Shininess", 180.0f);
+    prog.setUniform("Material.Shininess", 90.0f);
     model = mat4(1.0f);
     model = glm::rotate(model, glm::radians(90.0f), vec3(0.0f, 10.0f, 0.0f));
     model = glm::scale(model, vec3(0.005f, 0.005f, 0.005f));
@@ -90,9 +98,9 @@ void SceneBasic_Uniform::render()
     catMesh->render();
     //render the sofa
     prog.setUniform("Material.Kd", 0.1f, 0.1f, 0.1f);
-    prog.setUniform("Material.Ks", 0.9f, 0.9f, 0.9f);
+    prog.setUniform("Material.Ks", 0.1f, 0.1f, 0.1f);
     prog.setUniform("Material.Ka", 0.1f, 0.1f, 0.1f);
-    prog.setUniform("Material.Shininess", 180.0f);
+    prog.setUniform("Material.Shininess", 10.0f);
     model = mat4(1.0f);
     model = glm::rotate(model, glm::radians(180.0f), vec3(0.0f, 1.0f, 0.0f));
     model = glm::scale(model, vec3(0.05f, 0.05f, 0.05f));

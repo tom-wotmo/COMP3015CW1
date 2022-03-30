@@ -146,11 +146,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="glad.c" />
+    <ClCompile Include="helper\cube.cpp" />
     <ClCompile Include="helper\glslprogram.cpp" />
     <ClCompile Include="helper\glutils.cpp" />
     <ClCompile Include="helper\objmesh.cpp" />
     <ClCompile Include="helper\plane.cpp" />
+    <ClCompile Include="helper\skybox.cpp" />
+    <ClCompile Include="helper\stb_image.cpp" />
     <ClCompile Include="helper\teapot.cpp" />
+    <ClCompile Include="helper\texture.cpp" />
     <ClCompile Include="helper\torus.cpp" />
     <ClCompile Include="helper\trianglemesh.cpp" />
     <ClCompile Include="main.cpp" />
@@ -159,11 +163,10 @@
   <ItemGroup>
     <None Include="shader\basic_uniform.frag" />
     <None Include="shader\basic_uniform.vert" />
-    <None Include="shader\phong.frag" />
-    <None Include="shader\phong.vert" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="helper\aabb.h" />
+    <ClInclude Include="helper\cube.h" />
     <ClInclude Include="helper\drawable.h" />
     <ClInclude Include="helper\glslprogram.h" />
     <ClInclude Include="helper\glutils.h" />
@@ -171,10 +174,12 @@
     <ClInclude Include="helper\plane.h" />
     <ClInclude Include="helper\scene.h" />
     <ClInclude Include="helper\scenerunner.h" />
+    <ClInclude Include="helper\skybox.h" />
     <ClInclude Include="helper\stb\stb_image.h" />
     <ClInclude Include="helper\stb\stb_image_write.h" />
     <ClInclude Include="helper\teapot.h" />
     <ClInclude Include="helper\teapotdata.h" />
+    <ClInclude Include="helper\texture.h" />
     <ClInclude Include="helper\torus.h" />
     <ClInclude Include="helper\trianglemesh.h" />
     <ClInclude Include="helper\utils.h" />

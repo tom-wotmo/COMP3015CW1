@@ -3,6 +3,7 @@
 
 layout (location = 0) in vec3 VertexPosition;
 layout (location = 1) in vec3 VertexNormal;
+layout (location = 2) in vec2 VertexTexCoord;
 
 out vec3 position;
 out vec3 normal;
@@ -12,7 +13,8 @@ uniform mat3 NormalMatrix;
 uniform mat4 ProjectionMatrix;
 uniform mat4 MVP;
 
-void main() { 
+void main() 
+{ 
 
  normal = normalize( NormalMatrix * VertexNormal);
 

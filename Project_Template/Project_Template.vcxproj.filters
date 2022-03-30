@@ -57,18 +57,24 @@
     <ClCompile Include="helper\plane.cpp">
       <Filter>helper</Filter>
     </ClCompile>
+    <ClCompile Include="helper\cube.cpp">
+      <Filter>helper</Filter>
+    </ClCompile>
+    <ClCompile Include="helper\skybox.cpp">
+      <Filter>helper</Filter>
+    </ClCompile>
+    <ClCompile Include="helper\stb_image.cpp">
+      <Filter>helper</Filter>
+    </ClCompile>
+    <ClCompile Include="helper\texture.cpp">
+      <Filter>helper</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="shader\basic_uniform.frag">
       <Filter>shaders</Filter>
     </None>
     <None Include="shader\basic_uniform.vert">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="shader\phong.frag">
-      <Filter>shaders</Filter>
-    </None>
-    <None Include="shader\phong.vert">
       <Filter>shaders</Filter>
     </None>
   </ItemGroup>
@@ -119,6 +125,15 @@
       <Filter>helper</Filter>
     </ClInclude>
     <ClInclude Include="helper\utils.h">
+      <Filter>helper</Filter>
+    </ClInclude>
+    <ClInclude Include="helper\cube.h">
+      <Filter>helper</Filter>
+    </ClInclude>
+    <ClInclude Include="helper\skybox.h">
+      <Filter>helper</Filter>
+    </ClInclude>
+    <ClInclude Include="helper\texture.h">
       <Filter>helper</Filter>
     </ClInclude>
   </ItemGroup>
