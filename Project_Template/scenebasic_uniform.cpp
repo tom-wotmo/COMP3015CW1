@@ -25,18 +25,22 @@ void SceneBasic_Uniform::initScene()
     glEnable(GL_DEPTH_TEST);
 
 
-    view = glm::lookAt(vec3(0.5f, 0.75f, 0.75f), vec3(0.0f, 0.0f, 0.0f),
-        vec3(0.0f, 1.0f, 0.0f));
+    view = glm::lookAt(vec3(0.5f, 0.75f, 0.75f), vec3(0.0f, 0.0f, 0.0f),vec3(0.0f, 1.0f, 0.0f));
     projection = mat4(1.0f);
 
     //initialise the model matrix
     model = mat4(1.0f);
     projection = mat4(1.0f);
 
-   
+    
+    vec3 lightpos = vec3(0.0f, 1.0f, 1.0f);
 
-   // prog.setUniform("Light.Ld", 7.0f, 7.0f, 7.0f);     //setting the Ld uniform
-   // prog.setUniform("Light.Position", view * glm::vec4(15.0f, 15.0f, 2.0f, 0.0f)); 
+    //lights
+    prog.setUniform("Lights.La", 0.5f, 0.5f, 0.5f);
+    prog.setUniform("Lights.L", 0.5f, 0.5f, 0.5f);
+    prog.setUniform("Lights.Position", lightpos);
+    
+
 }
 
 void SceneBasic_Uniform::compile()
@@ -73,7 +77,7 @@ void SceneBasic_Uniform::render()
     view = glm::rotate(view, glm::radians(30.0f * rotation), vec3(0.0f, 1.0f, 0.0f));
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    prog.setUniform("Light.Ld", 7.0f, 7.0f, 7.0f);
+    //render the cat
     prog.setUniform("Material.Kd", 0.2f, 0.2f, 0.2f);
     prog.setUniform("Material.Ks", 0.9f, 0.9f, 0.9f);
     prog.setUniform("Material.Ka", 0.5f, 0.5f, 0.5f);
@@ -84,7 +88,7 @@ void SceneBasic_Uniform::render()
     model = glm::translate(model, vec3(10.0f, 0.0f, 10.0f));
     setMatrices();
     catMesh->render();
-
+    //render the sofa
     prog.setUniform("Material.Kd", 0.1f, 0.1f, 0.1f);
     prog.setUniform("Material.Ks", 0.9f, 0.9f, 0.9f);
     prog.setUniform("Material.Ka", 0.1f, 0.1f, 0.1f);
