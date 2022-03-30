@@ -29,31 +29,14 @@ void SceneBasic_Uniform::initScene()
         vec3(0.0f, 1.0f, 0.0f));
     projection = mat4(1.0f);
 
-    prog.setUniform("Spot.L", vec3(0.9f));
-    prog.setUniform("Spot.LA", vec3(0.5f));
-    prog.setUniform("Spot.Exponent", 50.0f);
-    prog.setUniform("Spot.Cutoff", glm::radians(15.0f));
-
-    float x, z;
-    for (int i = 0; i < 3; i++)
-    {
-        std::stringstream name;
-        name << "lights[" << i << "].Position";
-        x = 2.0f * cosf((glm::two_pi<float>() / 3) * i);
-        z = 2.0f * sinf((glm::two_pi<float>() / 3) * i);
-        prog.setUniform(name.str().c_str(), view * glm::vec4(x, 1.2f, z +
-            1.0f, 1.0f));
-    }
-
-
     //initialise the model matrix
     model = mat4(1.0f);
     projection = mat4(1.0f);
 
    
-    prog.setUniform("Material.Kd", 0.2f, 0.55f, 0.9f); //seting the Kd uniform
-    prog.setUniform("Light.Ld", 7.0f, 7.0f, 7.0f);     //setting the Ld uniform
-    prog.setUniform("Light.Position", view * glm::vec4(15.0f, 15.0f, 2.0f, 0.0f)); 
+
+   // prog.setUniform("Light.Ld", 7.0f, 7.0f, 7.0f);     //setting the Ld uniform
+   // prog.setUniform("Light.Position", view * glm::vec4(15.0f, 15.0f, 2.0f, 0.0f)); 
 }
 
 void SceneBasic_Uniform::compile()
@@ -90,6 +73,7 @@ void SceneBasic_Uniform::render()
     view = glm::rotate(view, glm::radians(30.0f * rotation), vec3(0.0f, 1.0f, 0.0f));
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+    prog.setUniform("Light.Ld", 7.0f, 7.0f, 7.0f);
     prog.setUniform("Material.Kd", 0.2f, 0.2f, 0.2f);
     prog.setUniform("Material.Ks", 0.9f, 0.9f, 0.9f);
     prog.setUniform("Material.Ka", 0.5f, 0.5f, 0.5f);
