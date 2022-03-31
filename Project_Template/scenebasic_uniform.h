@@ -18,6 +18,8 @@ private:
      
     std::unique_ptr<ObjMesh> catMesh;
     std::unique_ptr<ObjMesh> sofaMesh;
+    std::unique_ptr<ObjMesh> tableMesh;
+    
 
     float angle;
     float rotation;

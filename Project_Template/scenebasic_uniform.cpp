@@ -17,6 +17,8 @@ SceneBasic_Uniform::SceneBasic_Uniform() : rotation(0.0f)
 {
     catMesh = ObjMesh::load("../Project_Template/media/cat.obj", true);
     sofaMesh = ObjMesh::load("../Project_Template/media/sofa.obj", true);
+    tableMesh = ObjMesh::load("../Project_Template/media/table.obj", true);
+   
 }
 
 void SceneBasic_Uniform::initScene()
@@ -39,9 +41,6 @@ void SceneBasic_Uniform::initScene()
     prog.setUniform("Lights.La", 0.5f, 0.5f, 0.5f);
     prog.setUniform("Lights.L", 1.5f, 1.5f, 1.5f);
     prog.setUniform("Lights.Position", lightpos);
-
-
-    
 
 }
 
@@ -81,9 +80,10 @@ void SceneBasic_Uniform::render()
     //load the fog
     prog.setUniform("Fog.MaxDist", 60.0f);
     prog.setUniform("Fog.MinDist", 5.0f);
-    prog.setUniform("Fog.Colour", vec3(3.35f,1.0f,0.0f));
+    prog.setUniform("Fog.Colour", vec3(1.35f,1.0f,0.0f));
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
     //render the cat
     prog.setUniform("Material.Kd", 0.2f, 0.2f, 0.2f);
     prog.setUniform("Material.Ks", 0.9f, 0.9f, 0.9f);
@@ -106,6 +106,18 @@ void SceneBasic_Uniform::render()
     model = glm::translate(model, vec3(0.0f, -0.45f, 0.0f));
     setMatrices();
     sofaMesh->render();
+    //render the table
+    prog.setUniform("Material.Kd", 0.1f, 0.1f, 0.1f);
+    prog.setUniform("Material.Ks", 0.1f, 0.1f, 0.1f);
+    prog.setUniform("Material.Ka", 0.1f, 0.1f, 0.1f);
+    prog.setUniform("Material.Shininess", 10.0f);
+    model = mat4(1.0f);
+    model = glm::rotate(model, glm::radians(-90.0f), vec3(0.0f, 1.0f, 0.0f));
+    model = glm::scale(model, vec3(7.5f,7.5f,7.5f));
+    model = glm::translate(model, vec3(-1.5f, 0.0f, 0.0f));
+    setMatrices();
+    tableMesh->render();
+   
 }
 
 void SceneBasic_Uniform::resize(int w, int h)
