@@ -6,15 +6,14 @@ using std::cerr;
 using std::endl;
 
 #include <glm/gtc/matrix_transform.hpp>
-#include "helper/teapot.h"
-#include "helper/torus.h"
+
 #include "helper/glutils.h"
 
 using glm::vec3;
 using glm::mat4;
 GLuint testTex;
 
-SceneBasic_Uniform::SceneBasic_Uniform() : rotation(0.0f), plane(10.0f,10.0f,100,100) 
+SceneBasic_Uniform::SceneBasic_Uniform() : rotation(0.0f)
 {
     catMesh = ObjMesh::load("../Project_Template/media/cat.obj", true);
     sofaMesh = ObjMesh::load("../Project_Template/media/sofa.obj", true);
@@ -82,7 +81,7 @@ void SceneBasic_Uniform::render()
     //load the fog
     prog.setUniform("Fog.MaxDist", 60.0f);
     prog.setUniform("Fog.MinDist", 5.0f);
-    prog.setUniform("Fog.Colour", vec3(1.35f,1.0f,0.0f));
+    prog.setUniform("Fog.Colour", vec3(3.35f,1.0f,0.0f));
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     //render the cat

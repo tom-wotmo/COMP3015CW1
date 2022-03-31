@@ -7,7 +7,6 @@
 #include "helper/glslprogram.h"
 
 #include "helper/objmesh.h"
-#include "helper/plane.h"
 
 class SceneBasic_Uniform : public Scene
 {
@@ -15,7 +14,7 @@ private:
   
     GLuint vaoHandle;
     GLSLProgram prog;
-    Plane plane;
+  
      
     std::unique_ptr<ObjMesh> catMesh;
     std::unique_ptr<ObjMesh> sofaMesh;

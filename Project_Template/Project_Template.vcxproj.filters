@@ -42,31 +42,16 @@
     <ClCompile Include="glad.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="helper\teapot.cpp">
-      <Filter>helper</Filter>
-    </ClCompile>
-    <ClCompile Include="helper\torus.cpp">
-      <Filter>helper</Filter>
-    </ClCompile>
     <ClCompile Include="helper\trianglemesh.cpp">
       <Filter>helper</Filter>
     </ClCompile>
     <ClCompile Include="helper\objmesh.cpp">
       <Filter>helper</Filter>
     </ClCompile>
-    <ClCompile Include="helper\plane.cpp">
-      <Filter>helper</Filter>
-    </ClCompile>
     <ClCompile Include="helper\cube.cpp">
       <Filter>helper</Filter>
     </ClCompile>
     <ClCompile Include="helper\skybox.cpp">
-      <Filter>helper</Filter>
-    </ClCompile>
-    <ClCompile Include="helper\stb_image.cpp">
-      <Filter>helper</Filter>
-    </ClCompile>
-    <ClCompile Include="helper\texture.cpp">
       <Filter>helper</Filter>
     </ClCompile>
   </ItemGroup>
@@ -103,15 +88,6 @@
     <ClInclude Include="helper\drawable.h">
       <Filter>helper</Filter>
     </ClInclude>
-    <ClInclude Include="helper\teapot.h">
-      <Filter>helper</Filter>
-    </ClInclude>
-    <ClInclude Include="helper\teapotdata.h">
-      <Filter>helper</Filter>
-    </ClInclude>
-    <ClInclude Include="helper\torus.h">
-      <Filter>helper</Filter>
-    </ClInclude>
     <ClInclude Include="helper\trianglemesh.h">
       <Filter>helper</Filter>
     </ClInclude>
@@ -121,9 +97,6 @@
     <ClInclude Include="helper\objmesh.h">
       <Filter>helper</Filter>
     </ClInclude>
-    <ClInclude Include="helper\plane.h">
-      <Filter>helper</Filter>
-    </ClInclude>
     <ClInclude Include="helper\utils.h">
       <Filter>helper</Filter>
     </ClInclude>
@@ -131,9 +104,6 @@
       <Filter>helper</Filter>
     </ClInclude>
     <ClInclude Include="helper\skybox.h">
-      <Filter>helper</Filter>
-    </ClInclude>
-    <ClInclude Include="helper\texture.h">
       <Filter>helper</Filter>
     </ClInclude>
   </ItemGroup>
