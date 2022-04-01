@@ -45,6 +45,9 @@ void SceneBasic_Uniform::initScene()
     prog.setUniform("Lights.Position", lightpos);
 
     sofaTex = Texture::loadTexture("../Project_Template/media/sofa_D.png");
+
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, sofaTex);
 }
 
 void SceneBasic_Uniform::compile()
@@ -99,8 +102,7 @@ void SceneBasic_Uniform::render()
     setMatrices();
     catMesh->render();
     //render the sofa
-    glActiveTexture(GL_TEXTURE0);
-    glBindTexture(GL_TEXTURE_2D, sofaTex);
+ 
     prog.setUniform("Material.Kd", 0.4f, 0.4f, 0.4f);
     prog.setUniform("Material.Ks", 0.9f, 0.9f, 0.9f);
     prog.setUniform("Material.Ka", 0.5f, 0.5f, 0.5f);
