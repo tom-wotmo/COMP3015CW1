@@ -1,0 +1,2 @@
+﻿  glad.c
+C:\Users\wotma\OneDrive\Documents\COMP3015CW1\Project_Template\glad.c(25,10): fatal error C1083: Cannot open include file: 'glad/glad.h': No such file or directory

@@ -16,9 +16,9 @@ GLuint sofaTex;
 
 SceneBasic_Uniform::SceneBasic_Uniform() : rotation(0.0f)
 {
-    catMesh = ObjMesh::load("../Project_Template/media/cat.obj", true);
-    sofaMesh = ObjMesh::load("../Project_Template/media/sofa.obj", true);
-    tableMesh = ObjMesh::load("../Project_Template/media/table.obj", true);
+    catMesh = ObjMesh::load("cat.obj", true);
+    sofaMesh = ObjMesh::load("sofa.obj", true);
+    tableMesh = ObjMesh::load("table.obj", true);
    
 }
 
@@ -35,16 +35,14 @@ void SceneBasic_Uniform::initScene()
     
     model = mat4(1.0f);
     projection = mat4(1.0f);
-
     vec3 lightpos = vec3(0.0f, 1.0f, 1.0f);
 
-
-
+    //setting the lights
     prog.setUniform("Lights.La", 0.5f, 0.5f, 0.5f);
-    prog.setUniform("Lights.L", 3.0f, 1.5f, 0.0f);
+    prog.setUniform("Lights.L", 0.8f, 0.5f, 0.1f);
     prog.setUniform("Lights.Position", lightpos);
 
-    sofaTex = Texture::loadTexture("../Project_Template/media/sofa_D.png");
+    sofaTex = Texture::loadTexture("sofa_D.png");
 
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, sofaTex);
@@ -53,8 +51,8 @@ void SceneBasic_Uniform::initScene()
 void SceneBasic_Uniform::compile()
 {
 	try {
-		prog.compileShader("shader/basic_uniform.vert");
-		prog.compileShader("shader/basic_uniform.frag");
+		prog.compileShader("basic_uniform.vert");
+		prog.compileShader("basic_uniform.frag");
 		prog.link();
 		prog.use();
 
@@ -94,7 +92,7 @@ void SceneBasic_Uniform::render()
     prog.setUniform("Material.Kd", 0.2f, 0.2f, 0.2f);
     prog.setUniform("Material.Ks", 0.9f, 0.9f, 0.9f);
     prog.setUniform("Material.Ka", 0.5f, 0.5f, 0.5f);
-    prog.setUniform("Material.Shininess", 10.0f);
+    prog.setUniform("Material.Shininess", 1.0f);
     model = mat4(1.0f);
     model = glm::rotate(model, glm::radians(90.0f), vec3(0.0f, 10.0f, 0.0f));
     model = glm::scale(model, vec3(0.005f, 0.005f, 0.005f));
@@ -106,7 +104,7 @@ void SceneBasic_Uniform::render()
     prog.setUniform("Material.Kd", 0.4f, 0.4f, 0.4f);
     prog.setUniform("Material.Ks", 0.9f, 0.9f, 0.9f);
     prog.setUniform("Material.Ka", 0.5f, 0.5f, 0.5f);
-    prog.setUniform("Material.Shininess", 10.0f);
+    prog.setUniform("Material.Shininess", 1.0f);
     model = mat4(1.0f);
     model = glm::rotate(model, glm::radians(180.0f), vec3(0.0f, 1.0f, 0.0f));
     model = glm::scale(model, vec3(0.05f, 0.05f, 0.05f));
@@ -117,7 +115,7 @@ void SceneBasic_Uniform::render()
     prog.setUniform("Material.Kd", 0.4f, 0.4f, 0.4f);
     prog.setUniform("Material.Ks", 0.9f, 0.9f, 0.9f);
     prog.setUniform("Material.Ka", 0.5f, 0.5f, 0.5f);
-    prog.setUniform("Material.Shininess", 10.0f);
+    prog.setUniform("Material.Shininess", 1.0f);
     model = mat4(1.0f);
     model = glm::rotate(model, glm::radians(-90.0f), vec3(0.0f, 1.0f, 0.0f));
     model = glm::scale(model, vec3(7.5f,7.5f,7.5f));

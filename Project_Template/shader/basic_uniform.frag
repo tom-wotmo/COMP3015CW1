@@ -32,9 +32,11 @@ vec3 Colour;
 }Fog;
 
  vec3 blinnPhongModel(vec3 pos, vec3 n)
- {
+{
+     
 	 vec3 texColour = texture(Tex1, TexCoord).rgb;
 
+	 //ambient calculation
 	 vec3 ambient = texColour * Lights.La; 
 
 	 vec3 s = vec3 (0.0);
@@ -46,12 +48,14 @@ vec3 Colour;
 
 	 vec3 spec = vec3(0.0);
 
+	 vec3 v = normalize(-position.xyz);
+
 	if( sDotN > 0.0 )
 	{
-	 vec3 v = normalize(-position.xyz);
 
 	 vec3 h = normalize(v + s);
 
+	 //calculate specular
 	 spec = Material.Ks * pow( max( dot(h,normal), 0.0 ), Material.Shininess);
 
 	}
@@ -61,14 +65,17 @@ vec3 Colour;
 void main()
 {
   
+    //calculating the fog
     float dist = abs(position.z);
 
 	float fogFactor = (Fog.MaxDist - dist) / (Fog.MaxDist - Fog.MinDist);
 
 	fogFactor = clamp(fogFactor,0.0,1.0);
 
+	//passing into the phong model
 	vec3 phongColour = blinnPhongModel(position, normalize(normal));
 
+	//combining our fog colour and blinnphong
 	vec3 colour = mix(Fog.Colour, phongColour, fogFactor);
 
 	FragColor = vec4(colour, 1.0);
