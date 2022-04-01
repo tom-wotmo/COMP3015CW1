@@ -7,6 +7,7 @@ layout (location = 2) in vec2 VertexTexCoord;
 
 out vec3 position;
 out vec3 normal;
+out vec2 TexCoord;
 
 uniform mat4 ModelViewMatrix;
 uniform mat3 NormalMatrix;
@@ -19,6 +20,8 @@ void main()
  normal = normalize( NormalMatrix * VertexNormal);
 
  position = (ModelViewMatrix * vec4(VertexPosition,1.0)).xyz;
+
+ TexCoord = VertexTexCoord;
 
  gl_Position = MVP * vec4(VertexPosition,1.0);
 

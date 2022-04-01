@@ -1,4 +1,5 @@
 #include "scenebasic_uniform.h"
+#include "helper/texture.h"
 
 #include <iostream>
 #include <sstream>
@@ -11,7 +12,7 @@ using std::endl;
 
 using glm::vec3;
 using glm::mat4;
-GLuint testTex;
+GLuint sofaTex;
 
 SceneBasic_Uniform::SceneBasic_Uniform() : rotation(0.0f)
 {
@@ -31,17 +32,19 @@ void SceneBasic_Uniform::initScene()
     projection = mat4(1.0f);
 
     //initialise the model matrix
+    
     model = mat4(1.0f);
     projection = mat4(1.0f);
 
-    
     vec3 lightpos = vec3(0.0f, 1.0f, 1.0f);
 
-    //lights
+
+
     prog.setUniform("Lights.La", 0.5f, 0.5f, 0.5f);
-    prog.setUniform("Lights.L", 1.5f, 1.5f, 1.5f);
+    prog.setUniform("Lights.L", 3.0f, 1.5f, 0.0f);
     prog.setUniform("Lights.Position", lightpos);
 
+    sofaTex = Texture::loadTexture("../Project_Template/media/sofa_D.png");
 }
 
 void SceneBasic_Uniform::compile()
@@ -79,8 +82,8 @@ void SceneBasic_Uniform::render()
 
     //load the fog
     prog.setUniform("Fog.MaxDist", 60.0f);
-    prog.setUniform("Fog.MinDist", 5.0f);
-    prog.setUniform("Fog.Colour", vec3(1.35f,1.0f,0.0f));
+    prog.setUniform("Fog.MinDist", 1.0f);
+    prog.setUniform("Fog.Colour", vec3(1.0f,1.0f,1.0f));
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
@@ -88,17 +91,19 @@ void SceneBasic_Uniform::render()
     prog.setUniform("Material.Kd", 0.2f, 0.2f, 0.2f);
     prog.setUniform("Material.Ks", 0.9f, 0.9f, 0.9f);
     prog.setUniform("Material.Ka", 0.5f, 0.5f, 0.5f);
-    prog.setUniform("Material.Shininess", 90.0f);
+    prog.setUniform("Material.Shininess", 10.0f);
     model = mat4(1.0f);
     model = glm::rotate(model, glm::radians(90.0f), vec3(0.0f, 10.0f, 0.0f));
     model = glm::scale(model, vec3(0.005f, 0.005f, 0.005f));
-    model = glm::translate(model, vec3(10.0f, 0.0f, 10.0f));
+    model = glm::translate(model, vec3(10.0f, -0.02f, 10.0f));
     setMatrices();
     catMesh->render();
     //render the sofa
-    prog.setUniform("Material.Kd", 0.1f, 0.1f, 0.1f);
-    prog.setUniform("Material.Ks", 0.1f, 0.1f, 0.1f);
-    prog.setUniform("Material.Ka", 0.1f, 0.1f, 0.1f);
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, sofaTex);
+    prog.setUniform("Material.Kd", 0.4f, 0.4f, 0.4f);
+    prog.setUniform("Material.Ks", 0.9f, 0.9f, 0.9f);
+    prog.setUniform("Material.Ka", 0.5f, 0.5f, 0.5f);
     prog.setUniform("Material.Shininess", 10.0f);
     model = mat4(1.0f);
     model = glm::rotate(model, glm::radians(180.0f), vec3(0.0f, 1.0f, 0.0f));
@@ -107,9 +112,9 @@ void SceneBasic_Uniform::render()
     setMatrices();
     sofaMesh->render();
     //render the table
-    prog.setUniform("Material.Kd", 0.1f, 0.1f, 0.1f);
-    prog.setUniform("Material.Ks", 0.1f, 0.1f, 0.1f);
-    prog.setUniform("Material.Ka", 0.1f, 0.1f, 0.1f);
+    prog.setUniform("Material.Kd", 0.4f, 0.4f, 0.4f);
+    prog.setUniform("Material.Ks", 0.9f, 0.9f, 0.9f);
+    prog.setUniform("Material.Ka", 0.5f, 0.5f, 0.5f);
     prog.setUniform("Material.Shininess", 10.0f);
     model = mat4(1.0f);
     model = glm::rotate(model, glm::radians(-90.0f), vec3(0.0f, 1.0f, 0.0f));
