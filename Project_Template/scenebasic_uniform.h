@@ -25,7 +25,7 @@ private:
     float rotation;
     void setMatrices();
     void compile();
-    void GUIview();
+    
 
 public:
     SceneBasic_Uniform();

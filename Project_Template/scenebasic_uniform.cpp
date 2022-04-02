@@ -1,8 +1,5 @@
 #include "scenebasic_uniform.h"
 #include "helper/texture.h"
-#include "imgui.h"
-#include "imgui_impl_glfw.h"
-#include "imgui_impl_opengl3.h"
 
 
 #include <iostream>
@@ -71,7 +68,7 @@ void SceneBasic_Uniform::compile()
 
 void SceneBasic_Uniform::update( float t )
 {
-    //GUIview();
+    
 
     //controlling the rotating around the model
     rotation = t;
