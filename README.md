@@ -12,7 +12,13 @@ I would like the project to be set in 90's living room, with neutral colours and
 ## Running the program
 You can download the zip and run it through visual studio, but I've also set it up to run through an .exe that can be found in the x64/Debug/Project_Template.exe
 
+## Youtube Link 
+https://www.youtube.com/watch?v=567eWpFDSbw
 
+## Asset Creditation 
+Table - https://www.cgtrader.com/free-3d-models/furniture/table/table-for-ar-application-1daace94-e189-42bc-b059-909a46314ec0
+Sofa - https://www.cgtrader.com/free-3d-models/furniture/sofa/old-leather-couch-pbr-low-poly-sofa
+Cat - https://free3d.com/3d-model/low-poly-cat-46138.html
 
 
 ![catsofasc1](https://user-images.githubusercontent.com/57358973/161385470-c29471e0-951e-45a8-a984-e75c441c8fc9.png)
