@@ -34,14 +34,17 @@ vec3 Colour;
  vec3 blinnPhongModel(vec3 pos, vec3 n)
 {
      
+	 //getting the colour of texture
 	 vec3 texColour = texture(Tex1, TexCoord).rgb;
 
 	 //ambient calculation
 	 vec3 ambient = texColour * Lights.La; 
 
+	
 	 vec3 s = vec3 (0.0);
 	 s = normalize(vec3(Lights.Position) - pos);
-
+	 
+	 //dot product
 	 float sDotN = max( dot(s,n), 0.0 );
 
 	 vec3 diffuse = texColour * sDotN;

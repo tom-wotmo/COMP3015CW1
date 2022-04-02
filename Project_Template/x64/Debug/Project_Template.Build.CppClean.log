@@ -3,6 +3,12 @@ c:\users\wotma\onedrive\documents\comp3015cw1\project_template\x64\debug\vc142.i
 c:\users\wotma\onedrive\documents\comp3015cw1\project_template\x64\debug\glad.obj
 c:\users\wotma\onedrive\documents\comp3015cw1\project_template\x64\debug\scenebasic_uniform.obj
 c:\users\wotma\onedrive\documents\comp3015cw1\project_template\x64\debug\main.obj
+c:\users\wotma\onedrive\documents\comp3015cw1\project_template\x64\debug\imgui_widgets.obj
+c:\users\wotma\onedrive\documents\comp3015cw1\project_template\x64\debug\imgui_tables.obj
+c:\users\wotma\onedrive\documents\comp3015cw1\project_template\x64\debug\imgui_impl_glfw.obj
+c:\users\wotma\onedrive\documents\comp3015cw1\project_template\x64\debug\imgui_draw.obj
+c:\users\wotma\onedrive\documents\comp3015cw1\project_template\x64\debug\imgui_demo.obj
+c:\users\wotma\onedrive\documents\comp3015cw1\project_template\x64\debug\imgui.obj
 c:\users\wotma\onedrive\documents\comp3015cw1\project_template\x64\debug\trianglemesh.obj
 c:\users\wotma\onedrive\documents\comp3015cw1\project_template\x64\debug\torus.obj
 c:\users\wotma\onedrive\documents\comp3015cw1\project_template\x64\debug\texture.obj
@@ -13,12 +19,6 @@ c:\users\wotma\onedrive\documents\comp3015cw1\project_template\x64\debug\objmesh
 c:\users\wotma\onedrive\documents\comp3015cw1\project_template\x64\debug\glutils.obj
 c:\users\wotma\onedrive\documents\comp3015cw1\project_template\x64\debug\glslprogram.obj
 c:\users\wotma\onedrive\documents\comp3015cw1\project_template\x64\debug\cube.obj
-c:\users\wotma\onedrive\documents\comp3015cw1\project_template\x64\debug\project_template.ilk
-c:\users\wotma\onedrive\documents\comp3015cw1\project_template\x64\debug\project_template.exe
-c:\users\wotma\onedrive\documents\comp3015cw1\project_template\x64\debug\project_template.pdb
 c:\users\wotma\onedrive\documents\comp3015cw1\project_template\x64\debug\project_template.tlog\cl.command.1.tlog
 c:\users\wotma\onedrive\documents\comp3015cw1\project_template\x64\debug\project_template.tlog\cl.read.1.tlog
 c:\users\wotma\onedrive\documents\comp3015cw1\project_template\x64\debug\project_template.tlog\cl.write.1.tlog
-c:\users\wotma\onedrive\documents\comp3015cw1\project_template\x64\debug\project_template.tlog\link.command.1.tlog
-c:\users\wotma\onedrive\documents\comp3015cw1\project_template\x64\debug\project_template.tlog\link.read.1.tlog
-c:\users\wotma\onedrive\documents\comp3015cw1\project_template\x64\debug\project_template.tlog\link.write.1.tlog

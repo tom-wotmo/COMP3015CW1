@@ -1,5 +1,9 @@
 #include "scenebasic_uniform.h"
 #include "helper/texture.h"
+#include "imgui.h"
+#include "imgui_impl_glfw.h"
+#include "imgui_impl_opengl3.h"
+
 
 #include <iostream>
 #include <sstream>
@@ -16,6 +20,7 @@ GLuint sofaTex;
 
 SceneBasic_Uniform::SceneBasic_Uniform() : rotation(0.0f)
 {
+    //loading in our models
     catMesh = ObjMesh::load("cat.obj", true);
     sofaMesh = ObjMesh::load("sofa.obj", true);
     tableMesh = ObjMesh::load("table.obj", true);
@@ -27,12 +32,11 @@ void SceneBasic_Uniform::initScene()
     compile();
     glEnable(GL_DEPTH_TEST);
 
-    
+    //view and projection
     view = glm::lookAt(vec3(0.5f, 0.75f, 0.75f), vec3(0.0f, 0.0f, 0.0f),vec3(0.0f, 1.0f, 0.0f));
     projection = mat4(1.0f);
 
     //initialise the model matrix
-    
     model = mat4(1.0f);
     projection = mat4(1.0f);
     vec3 lightpos = vec3(0.0f, 1.0f, 1.0f);
@@ -44,6 +48,9 @@ void SceneBasic_Uniform::initScene()
 
     sofaTex = Texture::loadTexture("sofa_D.png");
 
+
+    
+    //binding the texture to our binding0
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, sofaTex);
 }
@@ -64,6 +71,9 @@ void SceneBasic_Uniform::compile()
 
 void SceneBasic_Uniform::update( float t )
 {
+    //GUIview();
+
+    //controlling the rotating around the model
     rotation = t;
 
 }
@@ -99,8 +109,8 @@ void SceneBasic_Uniform::render()
     model = glm::translate(model, vec3(10.0f, -0.02f, 10.0f));
     setMatrices();
     catMesh->render();
+
     //render the sofa
- 
     prog.setUniform("Material.Kd", 0.4f, 0.4f, 0.4f);
     prog.setUniform("Material.Ks", 0.9f, 0.9f, 0.9f);
     prog.setUniform("Material.Ka", 0.5f, 0.5f, 0.5f);
@@ -111,6 +121,7 @@ void SceneBasic_Uniform::render()
     model = glm::translate(model, vec3(0.0f, -0.45f, 0.0f));
     setMatrices();
     sofaMesh->render();
+
     //render the table
     prog.setUniform("Material.Kd", 0.4f, 0.4f, 0.4f);
     prog.setUniform("Material.Ks", 0.9f, 0.9f, 0.9f);
@@ -132,3 +143,4 @@ void SceneBasic_Uniform::resize(int w, int h)
     height = h;
     projection = glm::perspective(glm::radians(70.0f), (float)w / h, 0.3f, 100.0f);
 }
+
