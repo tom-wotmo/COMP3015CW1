@@ -3,8 +3,7 @@ This is an OpenGL project that uses GLSL custom shaders to render and show off a
 This particular scene uses Blinn-Phong and some fog shading. The scene contains one light and then the blinn phong shader to shade the Sofa, Table and the Cat.
 
 ## How to navigate the code base
-
-The code is relatively straight forward the BlinnPhong shading is done via the fragment shader as well as the fog calculations, the fragment shader also shows off the uniform structures for material, lights and fog. The vertex shader just computes the coordinates of the rendered objects, like the texture co-ordinates for our textures.
+The code is relatively straight forward the BlinnPhong shading is done via the fragment shader as well as the fog calculations, the fragment shader also shows off the uniform structures for material, lights and fog. The vertex shader just computes the coordinates of the rendered objects, like the texture co-ordinates for our textures. You can find the main body of coding in the scenebasic uniform where we render the objects and define the values for each constructor.
 
 ## Inspiration
 I would like the project to be set in 90's living room, with neutral colours and monotone furniture and lighting, it shall have all the basic house hold items and my final project will depict multiple shaders that you can control through IMGUI.
